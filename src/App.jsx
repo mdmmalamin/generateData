@@ -1,15 +1,12 @@
 import './App.css'
+import Home from './pages/Home/Home';
 
 function App() {
 
   return (
-    <>
-      <div>
-        <h1 className="text-3xl font-bold text-center">
-          Hello world!
-        </h1>
-      </div>
-    </>
+    <div className='max-w-7xl mx-auto my-10'>
+      <Home />
+    </div>
   )
 }
 

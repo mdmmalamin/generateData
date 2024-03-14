@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const World = require('./World');
 
 class City extends World {

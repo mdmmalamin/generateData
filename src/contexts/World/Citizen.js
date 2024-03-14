@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+const City = require('./City');
+
 class Citizen extends City {
   constructor(name) {
     super(name);

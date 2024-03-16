@@ -7,7 +7,7 @@ const AddCityForm = () => {
   const handleSubmit = e =>{
     e.preventDefault();
     const name = e.target.name.value;
-    console.log(name)
+    // console.log(name)
     addCity(name);
   }
   return (

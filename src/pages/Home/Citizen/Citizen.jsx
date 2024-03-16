@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 const Citizen = ({city}) => {
-  console.log(city?.citizens);
+  // console.log(city?.citizens);
   return (
     <>
     { city ?

@@ -5,12 +5,15 @@ import { World } from "../World/WorldContext";
 export const DataContext = createContext(null);
 
 const DataProvider = ({children}) => {
-  const [countCity, setCountCity] = useState(null);
-  const [addNewCity, setAddNewCity] = useState(null);
+  const [countCity, setCountCity] = useState([]);
+  const [addNewCity, setAddNewCity] = useState([]);
+
+  const allCity = [...countCity, ...addNewCity];
+  console.log("All City: ", allCity);
 
   const createCity = noOfCity => {
     const newCities = new World(noOfCity);
-    console.log(newCities);
+    console.log("new World: ", newCities.cities);
     setCountCity(newCities?.cities);
     return newCities;
   }
@@ -18,7 +21,8 @@ const DataProvider = ({children}) => {
   const addCity = cityName => {
     const newCity = new World();
     newCity.add_city(cityName);
-    setAddNewCity(newCity.cities)
+    // setAddNewCity(newCity.cities);
+    setAddNewCity(oldCity => [...oldCity, ...newCity.cities])
     return newCity;
   }
 
@@ -26,7 +30,8 @@ const DataProvider = ({children}) => {
     createCity,
     countCity,
     addCity,
-    addNewCity
+    addNewCity,
+    allCity
   }
   return (
     <DataContext.Provider value={dataInfo}>

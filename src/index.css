@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Chrome, Safari, Edge, Opera */
+  .spin-button-none::-webkit-outer-spin-button,
+  .spin-button-none::-webkit-inner-spin-button {
+    appearance: none;
+  }
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}

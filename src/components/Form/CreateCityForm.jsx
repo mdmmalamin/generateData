@@ -4,11 +4,11 @@ import { DataContext } from "../../contexts/Providers/DataProvider";
 const CreateCityForm = () => {
   const {createCity} = useContext(DataContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const city = e.target.city.value;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const city = event.target.city.value;
     createCity(city);
-    console.log(createCity(city))
+    // console.log(createCity(city))
   };
 
   return (
@@ -18,7 +18,7 @@ const CreateCityForm = () => {
           name="city"
           type="number"
           placeholder="Create City or Cities"
-          className="p-1.5 font-medium"
+          className="p-1.5 font-medium spin-button-none"
         />
         <input
           type="submit"

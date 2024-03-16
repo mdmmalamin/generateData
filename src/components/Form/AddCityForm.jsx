@@ -1,28 +1,27 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/Providers/DataProvider";
 
-const CreateCityForm = () => {
-  const {createCity} = useContext(DataContext);
+const AddCityForm = () => {
+  const {addCity} = useContext(DataContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e =>{
     e.preventDefault();
-    const city = e.target.city.value;
-    createCity(city);
-    console.log(createCity(city))
-  };
-
+    const name = e.target.name.value;
+    console.log(name)
+    addCity(name);
+  }
   return (
     <>
       <form onSubmit={handleSubmit} className="flex gap-0">
         <input
-          name="city"
-          type="number"
-          placeholder="Create City or Cities"
+          name="name"
+          type="text"
+          placeholder="Enter City Name"
           className="p-1.5 font-medium"
         />
         <input
           type="submit"
-          value="Random City"
+          value="Add City"
           className="rounded-full rounded-l-none font-bold text-md px-5 text-white bg-[#797DFC]"
         />
       </form>
@@ -30,4 +29,4 @@ const CreateCityForm = () => {
   );
 };
 
-export default CreateCityForm;
+export default AddCityForm;

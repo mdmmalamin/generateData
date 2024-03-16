@@ -3,18 +3,35 @@ import Citizen from "../Citizen/Citizen";
 import { DataContext } from "../../../contexts/Providers/DataProvider";
 
 const City = () => {
-  const { countCity } = useContext(DataContext);
-  console.log(countCity?.cities?.map((city) => city.city));
+  const { countCity, addNewCity } = useContext(DataContext);
+  // console.log(countCity?.cities?.map((city) => city.city));
+  // console.log(city?.map(singleCity => singleCity[0]));
+  console.log(countCity, addNewCity)
   return (
     <>
     { countCity ? 
-      countCity?.cities?.map((city, idx) => 
+      countCity?.map((city, idx) => 
         <div className="collapse collapse-arrow bg-base-200" key={idx}>
           <input type="radio" name="my-accordion-2" defaultChecked /> 
           <div className="collapse-title text-xl font-medium text-center">
-            {idx+1} {city.city}
+            {idx+1}. {city.city}
           </div>
-          <div className="collapse-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5"> 
+          <div className="collapse-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center gap-5"> 
+            <Citizen city={city} />
+          </div>
+        </div>
+      )
+      :
+      <></>
+    }
+    { addNewCity ? 
+      addNewCity?.map((city, idx) => 
+        <div className="collapse collapse-arrow bg-base-200" key={idx}>
+          <input type="radio" name="my-accordion-2" defaultChecked /> 
+          <div className="collapse-title text-xl font-medium text-center">
+            {idx+1}. {city.city}
+          </div>
+          <div className="collapse-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center gap-5"> 
             <Citizen city={city} />
           </div>
         </div>

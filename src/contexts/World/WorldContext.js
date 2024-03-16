@@ -75,7 +75,7 @@ export class City extends World {
     if(name === undefined){
       return this.cities.push({city: this.generateAnyName(), citizens: this.generateCitizens()});
     }
-    this.cities.push({city: this.name, citizens: this.generateCitizens()});
+    this.cities.push({city: name, citizens: this.generateCitizens()});
   }
 
   add_citizen(name, age) {
@@ -98,10 +98,7 @@ export class Citizen extends City {
   }
 }
 
-// module.exports = {World, City, Citizen};
 
-// const dhaka = new City("Dhaka");
-// console.log(dhaka);
-
-// const amin = new Citizen("Amin");
-// console.log(amin);
+// const dhaka = new World();
+// const a = dhaka.add_city('ABC');
+// console.log(dhaka)

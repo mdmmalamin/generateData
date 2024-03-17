@@ -16,8 +16,7 @@ const Banner = () => {
       <div className="flex gap-10 lg:gap-44 justify-center items-center flex-col lg:flex-row">
         <div className="max-w-md">
           <h1 className="mb-5 text-[40px] lg:text-[64px] lg:w-[633px] text-white font-extrabold">
-            Welcome to the{" "}
-            <span className="text-[#797DFC] uppercase">World</span>
+            Welcome to the <span className="text-[#797DFC] uppercase">World</span>
           </h1>
           <label className="flex flex-col items-center gap-5 rounded-full px-4 py-8">
             <CreateCityForm />

@@ -10,7 +10,7 @@ const City = () => {
     { allCity ? 
       allCity?.map((city, idx) => 
         <div className="collapse collapse-arrow bg-base-200" key={idx}>
-          <input type="radio" name="my-accordion-2" defaultChecked /> 
+          <input type="checkbox" /> 
           <div className="collapse-title text-xl font-medium text-center">
             {idx+1}. {city.city}
           </div>

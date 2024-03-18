@@ -15,7 +15,7 @@ const Banner = () => {
     >
       <div className="flex gap-10 lg:gap-44 justify-center items-center flex-col lg:flex-row">
         <div className="max-w-md">
-          <h1 className="mb-5 text-[40px] lg:text-[64px] lg:w-[633px] text-white font-extrabold">
+          <h1 className="text-center text-2xl lg:text-[64px] lg:w-[633px] text-white font-extrabold">
             Welcome to the <span className="text-[#797DFC] uppercase">World</span>
           </h1>
           <label className="flex flex-col items-center gap-5 rounded-full px-4 py-8">
@@ -25,7 +25,7 @@ const Banner = () => {
           </label>
         </div>
 
-        <div className="bg-gray-100 lg:bg-white p-10 flex gap-20 font-medium text-2xl rounded-3xl">
+        <div className="bg-gray-100 lg:bg-white p-5 md:p-10 flex gap-5 md:gap-20 font-medium text-sm md:text-2xl rounded-3xl">
           <div className="space-y-6">
             <p>Country</p>
             <p>Total City</p>

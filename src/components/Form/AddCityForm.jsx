@@ -17,12 +17,12 @@ const AddCityForm = () => {
           name="name"
           type="text"
           placeholder="Enter City Name"
-          className="p-1.5 font-medium"
+          className="p-1.5 font-medium w-40"
         />
         <input
           type="submit"
           value="Add City"
-          className="rounded-full rounded-l-none font-bold text-md px-5 text-white bg-[#797DFC]"
+          className="rounded-full rounded-l-none font-bold text-md px-5 text-white bg-[#797DFC] w-[135px]"
         />
       </form>
     </>

@@ -16,7 +16,7 @@ const Citizen = ({city}) => {
             </div>
             <div className="w-[1px] bg-black"></div>
             <div className="divide-y space-y-2">
-              <h2>Name: {citizen.fullName}</h2>
+              <h2>Name: {citizen.prefix} {citizen.fullName} {citizen.lastName}</h2>
               <p>Age: {citizen.age}</p>
               <h2>Gender: {citizen.gender}</h2>
               <p>Phone: {citizen.phone}</p>

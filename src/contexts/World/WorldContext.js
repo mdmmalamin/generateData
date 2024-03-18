@@ -1,5 +1,6 @@
-import { faker } from '@faker-js/faker';
-import { AvatarGenerator } from 'random-avatar-generator';
+import {
+  faker
+} from '@faker-js/faker';
 
 export class World {
   constructor(num) {
@@ -8,40 +9,58 @@ export class World {
   }
 
   add_city(cityName) {
-    if(cityName === ''){
-      for(let i = 0; i < 10; i++) {
-        this.cities.push({city: faker.location.city(), citizens: this.generateCitizens()});
+    if (cityName === '') {
+      for (let i = 0; i < 10; i++) {
+        this.cities.push({
+          city: faker.location.city(),
+          citizens: this.generateCitizens()
+        });
       }
-    } else{
-      this.cities.push({city: cityName, citizens: this.generateCitizens()});
+    } else {
+      this.cities.push({
+        city: cityName,
+        citizens: this.generateCitizens()
+      });
     }
   }
 
   createCities(num) {
-    for(let i = 0; i < num; i++) {
-      this.cities.push({city: faker.location.city(), citizens: this.generateCitizens()});
+    for (let i = 0; i < num; i++) {
+      this.cities.push({
+        city: faker.location.city(),
+        citizens: this.generateCitizens()
+      });
     }
   }
 
   generateAge() {
     const minAge = 9;
     const maxAge = 87;
-    const age = Math.floor(Math.random() *  (maxAge - minAge + 1)) + minAge;
-    
-    return  age;
+    const age = Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge;
+
+    return age;
   }
 
   generateCitizens() {
     let citizens = [];
-    const randomAvatar = new AvatarGenerator();
 
-    for(let i = 0; i < 50; i++) {
-      const fullName = faker.person.fullName();
+    for (let i = 0; i < 50; i++) {
+      const gender = faker.person.sexType(); // Returns a random sex. Not Returns a random gender.
+      const prefix = faker.person.prefix(`${gender === 'female' ? 'female' : 'male'}`);
+      const firstName = faker.person.firstName(`${gender === 'female' ? 'female' : 'male'}`);
+      const lastName = faker.person.lastName(`${gender === 'female' ? 'female' : 'male'}`);
       const citizenAge = this.generateAge();
-      const gender = faker.person.sex(); // Returns a random sex. Not Returns a random gender.
-      const phone = faker.phone.number() ;
-      const src = randomAvatar.generateRandomAvatar();
-      citizens.push({fullName: fullName, age: citizenAge, gender: gender, phone: phone, src: src});
+      const phone = faker.helpers.fromRegExp('+[8]{2}0-[1][3-9]{3}-[0-9]{6}');
+      const src = faker.image.avatarLegacy();
+      citizens.push({
+        prefix: prefix,
+        fullName: firstName,
+        lastName: lastName,
+        age: citizenAge,
+        gender: gender,
+        phone: phone,
+        src: src
+      });
     }
     return citizens;
   }
@@ -62,18 +81,27 @@ export class City extends World {
     super();
     this.citizens = [];
     this.name = name;
-    this.add_city(name);
+    this.new(name);
   }
 
-  add_city(name) {
-    if(name === ''){
-      return this.cities.push({city: faker.location.city(), citizens: this.generateCitizens()});
+  new_city(name) {
+    if (name === '') {
+      return this.cities.push({
+        city: faker.location.city(),
+        citizens: this.generateCitizens()
+      });
     }
-    this.cities.push({city: name, citizens: this.generateCitizens()});
+    this.cities.push({
+      city: name,
+      citizens: this.generateCitizens()
+    });
   }
 
   add_citizen(name, age) {
-    this.citizens.push({name: name, age: age});
+    this.citizens.push({
+      name: name,
+      age: age
+    });
   }
 
   all_citizen() {
@@ -88,7 +116,10 @@ export class Citizen extends City {
     this.getInfo(name);
   }
   getInfo(name) {
-    return this.cities.push({name: name, age: this.generateAge()});
+    return this.cities.push({
+      name: name,
+      age: this.generateAge()
+    });
   }
 }
 

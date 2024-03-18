@@ -5,12 +5,12 @@ import { DataContext } from "../../../contexts/Providers/DataProvider";
 import AddCityForm from "../../../components/Form/AddCityForm";
 import AllCitiesForm from "../../../components/Form/AllCitiesForm";
 const Banner = () => {
-  const {countCity} = useContext(DataContext);
-  // console.log(countCity.cities);
-
+  const {allCity} = useContext(DataContext);
+  const selectRandomCity = Math.floor(Math.random() * allCity.length);
+  // console.log(allCity[selectRandomCity].city);
   return (
     <div
-      className="mt-10 bg-[#12132D] h-[550px] rounded-3xl bg-cover bg-bottom"
+      className="m-10 bg-[#12132D] rounded-3xl bg-cover bg-bottom p-4"
       style={{ backgroundImage: `url(${bgBanner})` }}
     >
       <div className="flex gap-10 lg:gap-44 justify-center items-center flex-col lg:flex-row">
@@ -21,7 +21,7 @@ const Banner = () => {
           <label className="flex flex-col items-center gap-5 rounded-full px-4 py-8">
             <CreateCityForm />
             <AddCityForm />
-            <AllCitiesForm />
+            {/* <AllCitiesForm /> */}
           </label>
         </div>
 
@@ -34,9 +34,9 @@ const Banner = () => {
           </div>
           <div className="space-y-6">
             <p>01</p>
-            <p>{countCity ? countCity.length : 0}</p>
-            <p>{countCity ? "Dhaka" : 0}</p>
-            <p>{countCity ? countCity.length * 50 : 0}</p>
+            <p>{allCity ? allCity.length : 0}</p>
+            <p>{allCity ? allCity[selectRandomCity]?.city : "No cities available."}</p>
+            <p>{allCity ? allCity.length * 50 : 0}</p>
           </div>
         </div>
       </div>

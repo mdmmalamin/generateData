@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 export class World {
   constructor(num) {
     this.cities = [];
@@ -5,33 +7,19 @@ export class World {
   }
 
   add_city(cityName) {
-    if(cityName === undefined){
-      for(let i = 0; i < 99; i++) {
-        this.cities.push({city: this.generateAnyName(), citizens: this.generateCitizens()});
+    if(cityName === ''){
+      for(let i = 0; i < 10; i++) {
+        this.cities.push({city: faker.location.city(), citizens: this.generateCitizens()});
       }
+    } else{
+      this.cities.push({city: cityName, citizens: this.generateCitizens()});
     }
-    this.cities.push({city: cityName, citizens: this.generateCitizens()});
-  }
-
-  get_cities() {
-    return this.cities;
   }
 
   createCities(num) {
     for(let i = 0; i < num; i++) {
-      this.cities.push({city: this.generateAnyName(), citizens: this.generateCitizens()});
+      this.cities.push({city: faker.location.city(), citizens: this.generateCitizens()});
     }
-  }
-
-  generateAnyName() {
-    const characters = 'abcdefghijklmnopqrstuvwxyz';
-    const nameLength = Math.floor(Math.random() * 5) + 5;
-
-    let anyName = characters[Math.floor(Math.random() * 26)].toUpperCase();
-    for(let i = 1; i < nameLength; i++) {
-      anyName += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return anyName;
   }
 
   generateAge() {
@@ -45,9 +33,10 @@ export class World {
   generateCitizens() {
     let citizens = [];
     for(let i = 0; i < 50; i++) {
-      const citizenName = this.generateAnyName();
+      const fullName = faker.person.fullName();
+      const gender = faker.person.sex(); // Returns a random sex. Not Returns a random gender.
       const citizenAge = this.generateAge();
-      citizens.push({name: citizenName, age: citizenAge});
+      citizens.push({fullName: fullName, gender: gender, age: citizenAge});
     }
     return citizens;
   }

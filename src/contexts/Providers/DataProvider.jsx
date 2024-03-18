@@ -15,10 +15,12 @@ const DataProvider = ({ children }) => {
     const newCities = new World(noOfCity);
     console.log("new World: ", newCities.cities);
     setCountCity(newCities?.cities);
+
+    // const randomCity = newCities.random_city();
     return newCities;
   };
 
-  const addCity = (cityName) => {
+  const addCity = (cityName = '') => {
     const isExist = allCity.find(city => city.city === cityName);
     if(!isExist){
       const newCity = new World();
@@ -31,12 +33,19 @@ const DataProvider = ({ children }) => {
     }
   };
 
+  // const selectRandomCity = () => {
+  //   const callCity = createCity();
+
+  //   return callCity.randomCity;
+  // }
+
   const dataInfo = {
     createCity,
     countCity,
     addCity,
     addNewCity,
     allCity,
+    // selectRandomCity,
   };
   return (
     <DataContext.Provider value={dataInfo}>{children}</DataContext.Provider>

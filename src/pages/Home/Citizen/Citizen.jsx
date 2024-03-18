@@ -11,7 +11,8 @@ const Citizen = ({city}) => {
             <div className="">{idx +1}</div>
             <div className="w-[1px] bg-black"></div>
             <div>
-              <h2>Name: {citizen.name}</h2>
+              <h2>Name: {citizen.fullName}</h2>
+              <h2>Gender: {citizen.gender}</h2>
               <p>Age: {citizen.age}</p>
             </div>
           </div>

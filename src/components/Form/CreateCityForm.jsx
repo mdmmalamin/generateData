@@ -17,6 +17,8 @@ const CreateCityForm = () => {
         <input
           name="city"
           type="number"
+          maxLength={3}
+          required
           placeholder="Create City or Cities"
           className="p-1.5 font-medium spin-button-none"
         />

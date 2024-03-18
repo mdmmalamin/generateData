@@ -14,7 +14,7 @@ const City = () => {
           <div className="collapse-title text-xl font-medium text-center">
             {idx+1}. {city.city}
           </div>
-          <div className="collapse-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center gap-5"> 
+          <div className="collapse-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5"> 
             <Citizen city={city} />
           </div>
         </div>

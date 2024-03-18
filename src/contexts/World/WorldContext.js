@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { AvatarGenerator } from 'random-avatar-generator';
 
 export class World {
   constructor(num) {
@@ -32,11 +33,15 @@ export class World {
 
   generateCitizens() {
     let citizens = [];
+    const randomAvatar = new AvatarGenerator();
+
     for(let i = 0; i < 50; i++) {
       const fullName = faker.person.fullName();
-      const gender = faker.person.sex(); // Returns a random sex. Not Returns a random gender.
       const citizenAge = this.generateAge();
-      citizens.push({fullName: fullName, gender: gender, age: citizenAge});
+      const gender = faker.person.sex(); // Returns a random sex. Not Returns a random gender.
+      const phone = faker.phone.number() ;
+      const src = randomAvatar.generateRandomAvatar();
+      citizens.push({fullName: fullName, age: citizenAge, gender: gender, phone: phone, src: src});
     }
     return citizens;
   }
@@ -61,8 +66,8 @@ export class City extends World {
   }
 
   add_city(name) {
-    if(name === undefined){
-      return this.cities.push({city: this.generateAnyName(), citizens: this.generateCitizens()});
+    if(name === ''){
+      return this.cities.push({city: faker.location.city(), citizens: this.generateCitizens()});
     }
     this.cities.push({city: name, citizens: this.generateCitizens()});
   }

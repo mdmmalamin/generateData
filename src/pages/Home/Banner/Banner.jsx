@@ -3,10 +3,10 @@ import bgBanner from "../../../assets/bgBanner.png";
 import CreateCityForm from "../../../components/Form/CreateCityForm";
 import { DataContext } from "../../../contexts/Providers/DataProvider";
 import AddCityForm from "../../../components/Form/AddCityForm";
-import AllCitiesForm from "../../../components/Form/AllCitiesForm";
+// import AllCitiesForm from "../../../components/Form/AllCitiesForm";
 const Banner = () => {
   const {allCity} = useContext(DataContext);
-  const selectRandomCity = Math.floor(Math.random() * allCity.length);
+  const RandomCityIdx = Math.floor(Math.random() * allCity.length);
   // console.log(allCity[selectRandomCity].city);
   return (
     <div
@@ -33,9 +33,10 @@ const Banner = () => {
             <p>Total Citizen</p>
           </div>
           <div className="space-y-6">
-            <p>01</p>
+            <p>Bangladesh</p>
             <p>{allCity ? allCity.length : 0}</p>
-            <p>{allCity ? allCity[selectRandomCity]?.city : "No cities available."}</p>
+            {/* <p>{!allCity ? 'No cities available.' : allCity[RandomCityIdx]?.city}</p> */}  {/* TODO fix this! */}
+            <p>{`${allCity}` ? `${allCity[RandomCityIdx]?.city}` : 'No cities available.'}</p>
             <p>{allCity ? allCity.length * 50 : 0}</p>
           </div>
         </div>
